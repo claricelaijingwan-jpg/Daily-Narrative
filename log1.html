@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+	<title>Sign Up</title>
+	<script src="https://kit.fontawesome.com/e0736463dd.js" ></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  body {
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.page-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 90px);
+}
+
+  .container{
+    width: 360px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background: #667eea;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  button:hover {
+    background: #5563d1;
+  }
+
+  .switch {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+
+  .switch a {
+    color: #667eea;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .message {
+    text-align: center;
+    color: red;
+    margin-top: 10px;
+  }
+</style>
+</head>
+
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header-placeholder").innerHTML = data;
+  });
+</script>
+
+<body>
+
+<div id="header-placeholder"></div>
+
+
+<div class="page-center">
+  <div class="container">
+  <h2 id="title">Login</h2>
+
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+
+  <button onclick="handleAuth()">Login</button>
+
+  <div class="switch">
+    <span id="switchText">Don't have an account?</span>
+    <a onclick="toggleForm()">Sign Up</a>
+  </div>
+
+  <p class="message" id="message"></p>
+</div>
+
+
+<script>
+  let isLogin = true;
+
+  function toggleForm() {
+    isLogin = !isLogin;
+    document.getElementById("title").innerText = isLogin ? "Login" : "Sign Up";
+    document.querySelector("button").innerText = isLogin ? "Login" : "Sign Up";
+    document.getElementById("switchText").innerText =
+      isLogin ? "Don't have an account?" : "Already have an account?";
+    document.querySelector(".switch a").innerText =
+      isLogin ? "Sign Up" : "Login";
+    document.getElementById("message").innerText = "";
+  }
+
+  function handleAuth() {
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const message = document.getElementById("message");
+
+    if (!username || !password) {
+      message.innerText = "Please fill in all fields.";
+      return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    if (isLogin) {
+      const user = users.find(u => u.username === username && u.password === password);
+      if (user) {
+        alert("Login successful!");
+        localStorage.setItem("loggedInUser", username);
+        // window.location.href = "index.html"; // redirect if needed
+      } else {
+        message.innerText = "Invalid username or password.";
+      }
+    } else {
+      const exists = users.some(u => u.username === username);
+      if (exists) {
+        message.innerText = "Username already exists.";
+        return;
+      }
+
+      users.push({ username, password });
+      localStorage.setItem("users", JSON.stringify(users));
+      alert("Sign up successful! You can now log in.");
+      toggleForm();
+    }
+  }
+</script>
+
+</div>
+</body>
+</html>
