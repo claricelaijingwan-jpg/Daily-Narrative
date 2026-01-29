@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Gallery</title>
+	<link rel="shortcut icon" type="image/png"href="logo4.jpg">
+    <script src="https://kit.fontawesome.com/e0736463dd.js"></script>
+	<link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* --- General Reset --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        #navbar { display: flex; list-style: none; margin: 0; }
+        #navbar li { padding: 0 15px; }
+        #navbar li a { text-decoration: none; color: #333; font-weight: 600; }
+        #navbar li a.active { color: #088178; }
+
+        /* --- Hero Carousel --- */
+        .carousel-section { padding: 20px 80px; }
+        .carousel-container {
+            max-width: 1200px;
+            height: 400px;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .mySlides { display: none; width: 100%; height: 100%; }
+        .mySlides img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- Full Masonry Grid --- */
+        .gallery-container { padding: 40px 80px; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-auto-rows: 250px;
+            gap: 15px;
+            grid-auto-flow: dense; /* Fills gaps automatically */
+        }
+
+        .grid-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 2px solid #fff; /* Border to define the "box" */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* This forces images to "compromise" and fill the border exactly */
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            transition: transform 0.4s ease;
+        }
+
+        .grid-item:hover img { transform: scale(1.08); }
+
+        /* Spans to keep grid full */
+        .tall { grid-row: span 2; }
+        .wide { grid-column: span 2; }
+
+        /* --- Lightbox (Popup) Styling --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 30px; right: 40px;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-container, .carousel-section, #header { padding: 15px; }
+            .wide { grid-column: span 1; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="header">
+	<a href="#"><img src="logo4.jpg" width="70px" height="70px" class="logo" alt=" "></a>
+
+	<div> 
+		<ul id="navbar">
+			<li><a  href="index.html">Home</a></li>
+			<li><a href="blog.html">Blog</a></li>
+			<li><a class="active" href="event.html">Events</a></li>
+			<li><a href="about1.html">About</a></li>
+			<li><a href="log2.html">Log in</a></li>
+			<li id="user-area"></li>
+			<li><a href="collection.html"><i class="fa-solid fa-box-archive"></i></a></li>
+		<ul>
+	</div>	
+	</section> 
+
+<section id="page-header">
+		<h2> Events & Gallery </h2>
+		<p> Your support is our motivation. </p>
+</section>
+
+<br>
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <div class="mySlides"><img src="picture1.jpg"></div>
+            <div class="mySlides"><img src="picture2.jpg"></div>
+	    <div class="mySlides"><img src="picture3.jpg"></div>
+	<div class="mySlides"><img src="picture4.jpg"></div>
+        </div>
+    </section>
+
+    <div class="gallery-container">
+        <h2 style="text-align:center; padding-bottom: 20px;">Our Gallery and Events</h2>
+        <div class="gallery-grid">
+            <div class="grid-item wide" onclick="openLightbox(this)">
+                <img src="poster1.jpg" alt="Full Image 1">
+            </div>
+            <div class="grid-item tall" onclick="openLightbox(this)">
+                <img src="poster5.jpg" alt="Full Image 2">
+            </div>
+            <div class="grid-item" onclick="openLightbox(this)">
+                <img src="poster6.jpg" alt="Full Image 3">
+            </div>
+            <div class="grid-item" onclick="openLightbox(this)">
+                <img src="poster2.jpg" alt="Full Image 4">
+            </div>
+            <div class="grid-item wide" onclick="openLightbox(this)">
+                <img src="poster4.jpg" alt="Full Image 5">
+            </div>
+            <div class="grid-item tall" onclick="openLightbox(this)">
+                <img src="poster7.jpg" alt="Full Image 6">
+            </div>
+            <div class="grid-item" onclick="openLightbox(this)">
+                <img src="poster3.jpg" alt="Full Image 7">
+            </div>
+            <div class="grid-item" onclick="openLightbox(this)">
+                <img src="poster8.jpg" alt="Full Image 8">
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        // Carousel Logic
+        let slideIndex = 0;
+        const slides = document.getElementsByClassName("mySlides");
+        function showAutoSlides() {
+            for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+            slideIndex++;
+            if (slideIndex > slides.length) slideIndex = 1;
+            slides[slideIndex-1].style.display = "block";
+            setTimeout(showAutoSlides, 4000);
+        }
+        showAutoSlides();
+
+        // Lightbox Logic
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            document.getElementById("lightbox-img").src = imgSrc;
+            document.getElementById("lightbox").style.display = "flex";
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+
+        // Close lightbox if user clicks outside the image
+        window.onclick = function(event) {
+            const lightbox = document.getElementById("lightbox");
+            if (event.target == lightbox) {
+                closeLightbox();
+            }
+        }
+    </script>
+
+<section id="newsletter" class="section-p1 section-m1">
+	<div class="newstext">
+		<h4> Get Our Story from your Inbox</h4>
+		<p>Get information of our <span>latest updates</span> and new events.</p>
+	</div>
+	<div class="form">
+		<input type="text" placeholder="Your email address">
+		<button class="normal"><a href="log2.html">Sign Up</a></button>
+	</div>
+</section>
+
+
+<footer class="section-p1">
+	<div class="col">
+		<h4>Contact</h4>
+		<p><strong>Email: </strong>
+	<span><a href="mailto:claricelaijingwan@gmail.com">dailynarrative@gmail.com</a></span></p>
+		<p><strong>Phone: </strong><span><a href="https://wa.me/134253571">+60 13-425 3571</a></span></p>
+		<p><strong>Phone: </strong><span><a href="https://wa.me/128667600">+60 12-866 7600</a></span></p>
+
+		<div class="follow">
+		<h4>Follow us</h4>
+		<div class="icon">
+			<a href="https://www.facebook.com/share/1JCM5kXNZs/"><i class="fa fa-facebook-f"></i></a>
+			<a href="https://share.google/0kJk5c9mdmIRac85T"><i class="fa fa-instagram"></i></a>
+			<a href="https://share.google/q82zRPgozZqO7oidL"><i class="fa fa-twitter"></i></a>
+			<a href="https://youtube.com/channel/UCMWhYlDO1rUgV-4y4UEzUXw?si=ZbDipB1GVQ48N6Cq"><i class="fa fa-youtube"></i></a>
+		</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<h4>About</h4>
+		<a href="about.html">About Us</a>
+		<a href="#">Privacy Policy</a>
+		<a href="#">Terms & Condition</a>
+		<a href="#">Contact Us</a>
+		</div>
+
+	<div class="col install">
+		<h4>Install Our App</h4>
+		<p>From App Store or Google Play</p>
+		<div class="row">
+			<img src="apple1.png" width="160px" height="75px" alt=" ">
+			<img src="google1.png" width="150px" height="75px" alt=" ">
+		</div>
+		<p>Secured Payment Gateways</p>
+		<div class="row2">
+			<img src="visa1.png" width="70px" height="60px" alt=" ">
+			<img src="mastercard1.png" width="70px" height="55px" alt=" ">
+			<img src="mae1.png" width="65px" height="60px" alt=" ">
+		</div>
+	</div>
+	<div class="copyright">
+		<p>©Daily Narrative<br>This website is created to fulfil the requirements of IMD318 group project.</p>
+	</div>
+
+</footer>
+
+
+	<script src="script.js"></script>
+</body>
+
+</html>

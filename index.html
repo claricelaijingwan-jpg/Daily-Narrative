@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+	<title>Group Website</title>
+	<link rel="shortcut icon" type="image/png"href="logo4.jpg">
+	<script src="https://kit.fontawesome.com/e0736463dd.js" ></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<script>
+function subscribeAlert(event) {
+    event.preventDefault(); // stop page jumping
+    alert("🔒 Subscribe to unlock this feature");
+}
+</script>
+
+<script>
+  const userArea = document.getElementById("user-area");
+  const username = localStorage.getItem("loggedInUser");
+
+  if (username) {
+    userArea.innerHTML = `
+      <span style="font-weight:bold;">Hi, ${username}</span>
+      <a href="#" onclick="logout()" style="margin-left:10px;">Logout</a>
+    `;
+  } else {
+    userArea.innerHTML = `<a href="auth.html">Login</a>`;
+  }
+
+  function logout() {
+    localStorage.removeItem("loggedInUser");
+    window.location.reload();
+  }
+</script>
+
+
+<body>
+
+	<section id="header">
+	<a href="#"><img src="logo4.jpg" width="70px" height="70px" class="logo" alt=" "></a>
+
+	<div> 
+		<ul id="navbar">
+			<li><a class="active" href="index.html">Home</a></li>
+			<li><a href="blog.html">Blog</a></li>
+			<li><a href="event.html">Events</a></li>
+			<li><a href="about1.html">About</a></li>
+			<li><a href="log2.html">Log in</a></li>
+			<li id="user-area"></li>
+			<li><a href="collection.html"><i class="fa-solid fa-box-archive"></i></a></li>
+		<ul>
+	</div>	
+	</section> 
+
+
+	<section id="hero">
+		<h4> Daily Narrative </h4>
+		<h2> Enjoy millions of blogs </h2>
+		<h1> At your fingertips. </h1>
+		<p> Look at the world from multiple perspectives. </p>
+		<button><a href="blog.html"><b> Search Now </b></a></button>
+	</section>
+	
+
+	<section id="feature" class="section-p1">
+		<div class="fe-box">
+			<a href=" "><img src="study1.jpg" width="200px" height="200px" class="logo" alt=" "></a>
+			<h6> Study blog </h6>
+		</div>
+
+		<div class="fe-box">
+			<a href="#"><img src="food2.jpg" width="200px" height="200px" class="logo" alt=" "></a>
+			<h6> Food blog </h6>
+		</div>
+
+		<div class="fe-box">
+			<a href="#"><img src="travel2.jpg" width="200px" height="200px" class="logo" alt=" "></a>
+			<h6> Travel blog </h6>
+		</div>
+
+		<div class="fe-box">
+			<a href="#"><img src="pets2.jpg" width="200px" height="200px" class="logo" alt=" "></a>
+			<h6> Pets blog </h6>
+		</div>
+	</section>
+
+<section id="product1" class="section-p1">
+	<h2> Trending Stories </h2>
+	<p> The most liked stories </p> 
+	<div class="pro-container"> 
+		<div class="pro"> 
+			<a href="webpage1.html"><img src="archive1.jpg" width="80px" height "80px" alt=" "></a>
+			<div class="des">
+				<span>Study Blog</span>
+				<h5>NAM: Our Country's Never Ending Story</h5>
+				<h4> By: Eclipse </h4>
+				<div class="star">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+				</div>
+			</div>
+			<button onclick="collectItem('NAM: Our Countrys Never Ending Story')"><i class="fa fa-bookmark mark "></i></button>
+		</div>
+
+<div class="pro"> 
+			<a href="webpage2.html"><img src="ayam1.jpg" width="80px" height "80px" alt=" "></a>
+			<div class="des">
+				<span>Food Blog</span>
+				<h5>The “Hot Cuisine Adventure” Must-try Ayam Gepuk spots in Metrocity Kuching, Sarawak!</h5>
+				<h4> By: Belbelicious </h4>
+				<div class="star">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+				</div>
+			</div>
+			<button onclick="collectItem('Hot Cuisine Adventure” Must-try Ayam Gepuk spots in Metrocity Kuching, Sarawak!')"><i class="fa fa-bookmark mark "></i></button>
+		</div>
+
+<div class="pro"> 
+			<a href="webpage4.html"><img src="lonely1.jpg" width="80px" height "80px" alt=" "></a>
+			<div class="des">
+				<span>Self-growth</span>
+				<h5>Behind The Scenes of a Diploma Student's Life </h5>
+				<h4> By: Cherii </h4>
+				<div class="star">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+				</div>
+			</div>
+			<button onclick="collectItem('Behind The Secne of a Diploma Student Life')"><i class="fa fa-bookmark mark "></i></button>
+
+		</div>
+
+<div class="pro"> 
+			<a href="webpage6.html"><img src="korea1.jpg" width="80px" height "80px" alt=" "></a>
+			<div class="des">
+				<span>Travel blog</span>
+				<h5>Exploring Seoul: A Muslim-Friendly Guide to the Heart of South Korea</h5>
+				<h4> By: Maryam </h4>
+				<div class="star">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+				</div>
+			</div>
+			<button onclick="collectItem('Exploring Seoul: A Muslim-Friendly Guide to the Heart of South Korea')"><i class="fa fa-bookmark mark "></i></button>
+		</div>
+
+<div class="pro"> 
+			<a href="webpage3.html"><img src="animal1.jpg" width="80px" height "80px" alt=" "></a>
+			<div class="des">
+				<span>Nature Blog</span>
+				<h5>Beyond the Ordinary: Discovering 9 Amazing & Wild Animal Facts!</h5>
+				<h4> By: Nabil </h4>
+				<div class="star">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+				</div>
+			</div>
+			<button onclick="collectItem('Beyond the Ordinary: Discovering 9 Amazing & Wild Animal Facts!')"><i class="fa fa-bookmark mark "></i></button>
+		</div>
+
+<div class="pro"> 
+			<a href="webpage5.html"><img src="dead2.jpg" width="80px" height "80px" alt=" "></a>
+			<div class="des">
+				<span>Study blog</span>
+				<h5>How Students Actually Survive Assignments and Deadlines</h5>
+				<h4> By: Shrlyndrja </h4>
+				<div class="star">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+				</div>
+			</div>
+			<button onclick="collectItem('How Students Actually Survive Assignments and Deadlines')"><i class="fa fa-bookmark mark "></i></button>
+		</div>
+
+<div class="pro"> 
+			<a href="webpage7.html"><img src="palestine1.jpg" width="80px" height "80px" alt=" "></a>
+			<div class="des">
+				<span>World Blog</span>
+				<h5>The Human Heart of Palestine: Beyond the Headlines </h5>
+				<h4> By: Maryam </h4>
+				<div class="star">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+				</div>
+			</div>
+			<button onclick="collectItem('Human Heart of Palestine: Beyond the Headlines')"><i class="fa fa-bookmark mark "></i></button>
+		</div>
+
+<div class="pro"> 
+			<a href="webpage8.html"><img src="profile6.jpg" width="80px" height "80px" alt=" "></a>
+			<div class="des">
+				<span>Relationship blog</span>
+				<h5>About relationships: my own experiences</h5>
+				<h4> By: Bai Mo </h4>
+				<div class="star">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+				</div>
+			</div>
+			<button onclick="collectItem('About relationships: my own experiences')"><i class="fa fa-bookmark mark "></i></button>
+		</div>
+	</div>
+
+<script>
+    function collectItem(item) {
+      let collection = JSON.parse(localStorage.getItem("collection")) || [];
+
+      if (!collection.includes(item)) {
+        collection.push(item);
+        localStorage.setItem("collection", JSON.stringify(collection));
+        alert(item + " article is collected!");
+      } else {
+        alert(item + " is already in your collection.");
+      }
+    }
+  </script>
+
+</section>
+
+
+<section id="banner" class="section-m1">
+	<h4>More Stories</h4>
+	<h2> Join our subscription to enjoy up to <span>50% off</span> if subscribe today</h2>
+	<a href="log2.html"><button class="normal"> Join Us</button></a>
+</section>
+
+
+<section id="product1" class="section-p1">
+	<h2> Paid Content </h2>
+	<p> Join subscription to read more interesting content. </p> 
+	<div class="pro-container"> 
+		<div class="pro"> 
+			<img src="poker1.jpg" width="80px" height "80px" alt=" ">
+			<div class="des">
+				<span>Nonchalant Blog</span>
+				<h5>How to Keep a Poker Face</h5>
+				<h4> By: Restlyss </h4>
+			</div>
+			<a href="#" onclick="subscribeAlert(event)">
+  <i class="fa fa-bookmark mark"></i>
+</a>
+		</div>
+
+<div class="pro"> 
+			<img src="milktea3.jpg" width="80px" height "80px" alt=" ">
+			<div class="des">
+				<span>Food Blog</span>
+				<h5>The Essential need of "BOBA" drink??</h5>
+				<h4> By: Ayato </h4>
+				</div>
+			<a href="#" onclick="subscribeAlert(event)">
+  <i class="fa fa-bookmark mark"></i></a>
+		</div>
+
+<div class="pro"> 
+			<img src="sixseven1.jpg" width="80px" height "80px" alt=" ">
+			<div class="des">
+				<span>Personal blog</span>
+				<h5>67: The Pros & Cons of Emerging Trends</h5>
+				<h4> By: Professor S</h4>
+				</div>
+		<a href="#" onclick="subscribeAlert(event)">
+  <i class="fa fa-bookmark mark"></i></a>
+		</div>
+
+<div class="pro"> 
+			<img src="mbti1.jpg" width="80px" height "80px" alt=" ">
+			<div class="des">
+				<span>Personal blog</span>
+				<h5>Know Urself Better Through MBTI!</h5>
+				<h4> By: Banana573 </h4>
+				</div>
+			<a href="#" onclick="subscribeAlert(event)">
+  <i class="fa fa-bookmark mark"></i></a>
+		</div>
+
+<div class="pro"> 
+			<img src="cat1.jpg" width="80px" height "80px" alt=" ">
+			<div class="des">
+				<span>Pet Blog</span>
+				<h5>I think Tuxedo Cats are all CRAZY</h5>
+				<h4> By: Neko Chan </h4>
+				</div>
+			<a href="#" onclick="subscribeAlert(event)">
+  <i class="fa fa-bookmark mark"></i></a>
+		</div>
+
+<div class="pro"> 
+			<img src="travel3.jpg" width="80px" height "80px" alt=" ">
+			<div class="des">
+				<span>Travel blog</span>
+				<h5>Away from my Bussing Life: A Trip to Switzerland </h5>
+				<h4> By: Tifanny </h4>
+				</div>
+			<a href="#" onclick="subscribeAlert(event)">
+  <i class="fa fa-bookmark mark"></i></a>
+		</div>
+
+<div class="pro"> 
+			<a href="#"><img src="pasta1.jpg" width="80px" height "80px" alt=" "></a>
+			<div class="des">
+				<span>Food Blog</span>
+				<h5>The Perfect Pasta Made From Authentic Italian Recipe </h5>
+				<h4> By: Mario </h4>
+				</div>
+			<a href="#" onclick="subscribeAlert(event)">
+  <i class="fa fa-bookmark mark"></i></a>
+		</div>
+
+<div class="pro"> 
+			<img src="music1.jpg" width="80px" height "80px" alt=" ">
+			<div class="des">
+				<span>Music blog</span>
+				<h5>Music: What Connects the People</h5>
+				<h4> By: Ado </h4>
+				</div>
+			<a href="#" onclick="subscribeAlert(event)">
+  <i class="fa fa-bookmark mark"></i></a>
+		</div>
+	</div>
+</section>
+
+<section id="sm-banner" class="section-p1">
+	<div class="banner-box">
+		<h4>Writer's Competition</h4>
+		<h2>First Prize RM2000</h2>
+		<span>Enleash your true talent</span>
+		<a href="event.html"><button class="white">Learn More</button></a>
+	</div>
+	<div class="banner-box banner-box2">
+		<h4>More Blog?</h4>
+		<h2>New Arrivals</h2>
+		<span>Check it out today</span>
+		<a href="blog.html"><button class="black">Collection</button></a>
+	</div>
+</section>
+
+<section id="banner3">
+	<div class="banner-box">
+		<h2>New Arrivals</h2>
+		<h3>Travel Blogs</h3>
+	</div>
+	<div class="banner-box banner-box2">
+		<h2>New Arrivals</h2>
+		<h3>Food Blogs</h3>
+	</div>
+	<div class="banner-box banner-box3">
+		<h2>Learn Personal Growth</h2>
+		<h3>New Blogs</h3>
+	</div>
+</section>
+
+<section id="newsletter" class="section-p1 section-m1">
+	<div class="newstext">
+		<h4> Get Our Story from your Inbox</h4>
+		<p>Get information of our <span>latest updates</span> and new events.</p>
+	</div>
+	<div class="form">
+		<input type="text" placeholder="Your email address">
+		<a href="log2.html"><button class="normal" height="30px" width="1000px">Sign Up</button></a>
+	</div>
+</section>
+
+
+<footer class="section-p1">
+	<div class="col">
+		<h4>Contact</h4>
+		<p><strong>Email: </strong>
+	<span><a href="mailto:claricelaijingwan@gmail.com">dailynarrative@gmail.com</a></span></p>
+		<p><strong>Phone: </strong><span><a href="https://wa.me/134253571">+60 13-425 3571</a></span></p>
+		<p><strong>Phone: </strong><span><a href="https://wa.me/128667600">+60 12-866 7600</a></span></p>
+
+		<div class="follow">
+		<h4>Follow us</h4>
+		<div class="icon">
+			<a href="https://www.facebook.com/share/1JCM5kXNZs/"><i class="fa fa-facebook-f"></i></a>
+			<a href="https://share.google/0kJk5c9mdmIRac85T"><i class="fa fa-instagram"></i></a>
+			<a href="https://share.google/q82zRPgozZqO7oidL"><i class="fa fa-twitter"></i></a>
+			<a href="https://youtube.com/channel/UCMWhYlDO1rUgV-4y4UEzUXw?si=ZbDipB1GVQ48N6Cq"><i class="fa fa-youtube"></i></a>
+		</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<h4>About</h4>
+		<a href="about1.html">About Us</a>
+		<a href="#">Privacy Policy</a>
+		<a href="#">Terms & Condition</a>
+		<a href="#">Contact Us</a>
+		</div>
+
+	<div class="col install">
+		<h4>Install Our App</h4>
+		<p>From App Store or Google Play</p>
+		<div class="row">
+			<img src="apple1.png" width="160px" height="75px" alt=" ">
+			<img src="google1.png" width="150px" height="75px" alt=" ">
+		</div>
+		<p>Secured Payment Gateways</p>
+		<div class="row2">
+			<img src="visa1.png" width="70px" height="60px" alt=" ">
+			<img src="mastercard1.png" width="70px" height="55px" alt=" ">
+			<img src="mae1.png" width="65px" height="60px" alt=" ">
+		</div>
+	</div>
+	<div class="copyright">
+		<p>©Daily Narrative<br>This website is created to fulfil the requirements of IMD318 group project.</p>
+	</div>
+
+</footer>
+
+
+	<script src="script.js"></script>
+</body>
+
+</html>

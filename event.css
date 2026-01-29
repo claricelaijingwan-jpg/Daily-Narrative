@@ -1,0 +1,83 @@
+/* Gallery Hero Carousel (3D Effect) */
+#gallery-hero {
+    padding: 40px 0;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-inner {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards { position: relative; width: 100%; height: 100%; }
+
+.card {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    left: 0; right: 0; margin: auto;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Logic for Carousel swapping using Radio Buttons */
+#item-1:checked ~ .cards #song-3, #item-2:checked ~ .cards #song-1, #item-3:checked ~ .cards #song-2 {
+    transform: translateX(-40%) scale(0.8); opacity: 0.4; z-index: 0;
+}
+#item-1:checked ~ .cards #song-2, #item-2:checked ~ .cards #song-3, #item-3:checked ~ .cards #song-1 {
+    transform: translateX(40%) scale(0.8); opacity: 0.4; z-index: 0;
+}
+#item-1:checked ~ .cards #song-1, #item-2:checked ~ .cards #song-2, #item-3:checked ~ .cards #song-3 {
+    transform: translateX(0) scale(1); opacity: 1; z-index: 1;
+}
+
+/* Filter Buttons */
+.filter-buttons { text-align: center; margin-bottom: 30px; }
+.filter-buttons button {
+    padding: 10px 25px;
+    border: 1px solid #088178;
+    background: transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.3s;
+}
+.filter-buttons button.active, .filter-buttons button:hover {
+    background: #088178;
+    color: white;
+}
+
+/* Masonry Layout */
+.masonry-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 200px;
+    gap: 15px;
+    grid-auto-flow: dense;
+}
+
+.gallery-item { overflow: hidden; border-radius: 8px; }
+.gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+.gallery-item:hover img { transform: scale(1.1); }
+
+/* Varying Sizes for Masonry */
+.gallery-item.tall { grid-row: span 2; }
+.gallery-item.wide { grid-column: span 2; }
