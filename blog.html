@@ -18,103 +18,57 @@
 	min-height: 100vh;
 }
 
-	/* 1. Essential Fix: Ensure the container doesn't overflow */
-* {
-    box-sizing: border-box;
-}
-
-body {
-    overflow-x: hidden; /* Prevents horizontal scrolling on mobile */
-}
-
-/* 2. Mobile Specific Styles (Android/iPhone) */
-@media (max-width: 600px) {
+	/* Mobile Optimization for Android/iOS */
+@media screen and (max-width: 768px) {
     
-    /* Header & Navbar */
-    #header {
-        padding: 10px 20px;
-        flex-direction: column; /* Stacks logo and nav */
-        text-align: center;
-    }
-
-    #navbar {
-        display: flex;
-        flex-wrap: wrap; /* Allows menu items to wrap to next line */
-        justify-content: center;
-        padding: 0;
-        gap: 10px;
-    }
-
-    #navbar li {
-        list-style: none;
-    }
-
-    /* Page Title Section */
-    #page-header h2 {
-        font-size: 28px;
-    }
-
-    /* Main Content & Sidebar Layout */
+    /* 1. Reset the layout container */
     .content.clearfix {
-        display: block; /* Disables floats/side-by-side layout */
+        display: flex;
+        flex-direction: column; /* Stacks main-content and sidebar vertically */
         padding: 10px;
-    }
-
-    .main-content, .sidebar {
-        width: 100% !important; /* Forces full width */
-        float: none !important;
-        padding: 0;
-    }
-
-    /* Blog Post Cards */
-    .post {
-        display: flex;
-        flex-direction: column; /* Image on top, text on bottom */
-        margin-bottom: 30px;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 20px;
-    }
-
-    .post-image {
-        width: 100% !important; /* Overrides the 300px in your HTML */
-        height: auto !important; /* Maintains aspect ratio */
-        object-fit: cover;
-    }
-
-    .post-preview {
-        width: 100% !important;
-        padding: 10px 0;
-    }
-
-    .post-preview h1 {
-        font-size: 20px;
-    }
-
-    /* Newsletter Section */
-    #newsletter {
-        padding: 20px;
-        text-align: center;
-    }
-
-    #newsletter .form {
-        display: flex;
-        flex-direction: column;
         width: 100%;
     }
 
-    #newsletter input {
+    /* 2. Make Main Content and Sidebar the same width */
+    .main-content, 
+    .sidebar {
         width: 100% !important;
-        margin-bottom: 10px;
+        float: none !important; /* Removes desktop side-by-side positioning */
+        margin: 0 auto;
+        padding: 0;
     }
 
-    /* Footer Columns */
-    footer {
+    /* 3. Align Sidebar content (Search & Topics) */
+    .sidebar {
+        margin-top: 40px; /* Adds space after the last blog post */
+        padding-top: 20px;
+        border-top: 2px solid #eee; /* Optional: separates posts from sidebar */
+    }
+
+    .sidebar .section {
+        margin-bottom: 30px;
+        text-align: left; /* Ensures text aligns with your blog posts */
+    }
+
+    /* 4. Fix Blog Post images to fit phone width */
+    .post {
+        display: flex;
         flex-direction: column;
+        width: 100%;
+        margin-bottom: 25px;
     }
 
-    footer .col {
-        width: 100% !important;
-        margin-bottom: 20px;
+    .post-image {
+        width: 100% !important; 
+        height: auto !important;
+        border-radius: 8px; /* Makes it look more like a modern app */
+    }
+
+    /* 5. Adjust the Topics list for better thumb-tapping */
+    .section.topics ul li {
+        padding: 10px 0;
+        border-bottom: 1px solid #f0f0f0;
+        list-style: none;
     }
 }
 }
@@ -386,4 +340,5 @@ body {
 
 
 </html>
+
 
