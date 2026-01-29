@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+	<title>Collections</title>
+	<link rel="shortcut icon" type="image/png"href="logo4.jpg">
+	<script src="https://kit.fontawesome.com/e0736463dd.js" ></script>
+	<link rel="stylesheet" href="style.css">
+  <title>Collections</title>
+  </head>
+
+<style>
+#collectionList {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+    list-style: none;
+}
+
+#collectionList li {
+    background: #fff;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-left: 5px solid #088178; /* A nice accent color */
+    transition: transform 0.2s ease;
+}
+
+#collectionList li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+#collectionList span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #222;
+}
+
+#collectionList button {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+#collectionList button:hover {
+    background-color: #dc2626;
+}
+
+#collectionList p {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    margin-top: 50px;
+}
+
+h1 {
+    text-align: center;
+    color: #1a1a1a;
+    font-family: sans-serif;
+}
+</style>
+
+<body>
+
+	<section id="header">
+	<a href="#"><img src="logo4.jpg" width="70px" height="70px" class="logo" alt=" "></a>
+
+	<div> 
+		<ul id="navbar">
+			<li><a  href="index.html">Home</a></li>
+			<li><a href="blog.html">Blog</a></li>
+			<li><a href="event.html">Events</a></li>
+			<li><a href="about1.html">About</a></li>
+			<li><a href="log2.html">Log in</a></li>
+			<li id="user-area"></li>
+			<li><a class="active" href="collection.html"><i class="fa-solid fa-box-archive"></i></a></li>
+		<ul>
+	</div>	
+	</section> 
+
+
+<section id="page-header">
+		<h2> Collection </h2>
+		<p> Track your interest here. </p>
+</section>
+
+   <ul id="collectionList"></ul>
+
+
+
+  <script>
+  const list = document.getElementById("collectionList");
+
+  function loadCollection() {
+    list.innerHTML = "";
+    const collection = JSON.parse(localStorage.getItem("collection")) || [];
+
+    if (collection.length === 0) {
+      list.innerHTML = "<p>No items collected yet.</p>";
+      return;
+    }
+
+    collection.forEach((item, index) => {
+      const li = document.createElement("li");
+      li.style.display = "flex";
+      li.style.justifyContent = "space-between";
+      li.style.alignItems = "center";
+
+      li.innerHTML = `
+        <span>${item}</span>
+        <button onclick="removeItem(${index})">Remove</button>
+      `;
+
+      list.appendChild(li);
+    });
+  }
+
+  function removeItem(index) {
+    let collection = JSON.parse(localStorage.getItem("collection")) || [];
+    collection.splice(index, 1);
+    localStorage.setItem("collection", JSON.stringify(collection));
+    loadCollection();
+  }
+
+  loadCollection();
+</script>
+
+
+</body>
+</html>
