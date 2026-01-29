@@ -4,7 +4,7 @@
 <head> 
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Blogs</title>
 	<link rel="shortcut icon" type="image/png"href="logo4.jpg">
 	<script src="https://kit.fontawesome.com/e0736463dd.js" ></script>
@@ -16,6 +16,62 @@
 <style>
 .content.clearfix{
 	min-height: 100vh;
+}
+
+	/* Mobile Responsive Adjustments */
+@media (max-width: 799px) {
+    /* Stack the navigation menu */
+    #navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        top: 0;
+        right: -300px; /* Hide menu off-screen initially */
+        height: 100vh;
+        width: 300px;
+        background-color: #f3f3f3;
+        box-shadow: 0 40px 60px rgba(0,0,0,0.1);
+        padding: 80px 0 0 10px;
+        transition: 0.3s;
+    }
+
+    /* Stack the blog content and sidebar */
+    .content.clearfix {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-content, .sidebar {
+        width: 100% !important;
+        padding: 10px;
+    }
+
+    /* Make blog posts stack image on top of text */
+    .post {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .post img {
+        width: 100% !important; /* Forces image to fit screen width */
+        height: auto;
+        margin-bottom: 15px;
+    }
+
+    /* Adjust the newsletter form */
+    #newsletter .form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #newsletter input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
 </style>
 
@@ -282,5 +338,6 @@
 
 <script src="script.js"></script>
 </body>
+
 
 </html>
